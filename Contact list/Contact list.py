@@ -86,7 +86,14 @@ while True:
     print("6. Apagar um contato.")
     print("7. Sair do programa")
 
-    escolha = int(input("Digite o numero da opção desejada: "))
+    try:
+        escolha = int(input("Digite o numero da opção desejada: "))
+        if escolha < 1 or escolha > 7:  # Verifica se a escolha está fora do intervalo válido
+            print("Por favor, digite um número entre 1 e 7.")
+            continue  # Volta ao início do loop para pedir uma nova entrada
+    except ValueError:
+        print("Por favor, digite um número válido.")
+        continue  # Volta ao início do loop para pedir uma nova entrada
 
     if escolha == 1:
         try:
@@ -154,7 +161,7 @@ while True:
         try:
             indice = input("Digite o número do contato que deseja excluir: ")
             if not indice.isdigit():
-                raise ValueError("Houve um erro, digite apenas ")
+                raise ValueError("Houve um erro, digite apenas números!")
 
             apagar_contato(contatos, indice)
 
